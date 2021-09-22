@@ -47,7 +47,7 @@ class Login extends CI_Controller {
 	 	$usuario = $this->AutenticarLogin->autenticar($login, $senha);
 
 		if($usuario == true)
-		{
+		{ 
 			// $this->session->set_userdata("usuariologado", $usuario);
 			 $this->session->set_flashdata("success", "parabéns você está logado.");
 			// redirect('Cliente');
