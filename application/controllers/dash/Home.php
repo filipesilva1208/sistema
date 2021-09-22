@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -42,6 +42,12 @@ class Dashboard extends CI_Controller {
 		));
 
 		$this->load->view('cliente/Dashboard',$data);
+	}
+
+	public function teste()
+	{
+		header("Location: https://google.com");
+
 	}
 
 
