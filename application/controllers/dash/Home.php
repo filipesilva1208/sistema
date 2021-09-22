@@ -5,6 +5,8 @@ class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		$this->load->library("access_control");
+		$this->access_control->checking();
 	}
 
 	public function index()
@@ -41,14 +43,8 @@ class Home extends CI_Controller {
 			'js/dashboard',
 		));
 
-		$this->load->view('cliente/Dashboard',$data);
+		$this->load->view('cliente/Home',$data);
 	}
 
-	public function teste()
-	{
-		header("Location: https://google.com");
-
-	}
-
-
+	
 }

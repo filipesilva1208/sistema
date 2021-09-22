@@ -1,13 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Controle_acesso {
+class Access_control {
 
-  public function controlar(){
+  public function checking()
+  {
     $CI = &get_instance();
-    $user = $CI->session->userdata("usuariologado");
+    $user = $CI->session->userdata("loggedUser");
+
     if(empty($user)){        
-        redirect('Inicio');
+        redirect('Login');
     }
   }
 
