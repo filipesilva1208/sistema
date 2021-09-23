@@ -99,10 +99,10 @@ $autoload['helper'] = array(
     'trim_helper',
     'primeira_palavra_helper',
     'status_helper',
-    'compensado_helper',
     'assets_helper',
     'categorias_helper',
     'retira_acentos_helper',
+    'ip_helper',
 );
 
 /*
