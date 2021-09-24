@@ -103,6 +103,7 @@ $autoload['helper'] = array(
     'categorias_helper',
     'retira_acentos_helper',
     'ip_helper',
+    'components_helper',
 );
 
 /*

@@ -9,8 +9,15 @@ class Register extends CI_Controller {
 		$this->load->model('RegisterUser_m');
 	}
 
-	public function index($id = null)
+	public function index()
 	{
+		redirect('register/sponsor');
+	}
+
+	
+	public function sponsor()
+	{
+		$data['title'] = 'Register';
 		$data['css'] = load_css(array(
 			'css/fonts.googleapis',
 			'css/fontawesome',
@@ -27,6 +34,7 @@ class Register extends CI_Controller {
 			'js/toastr.min',
 			'js/register/javascript',
 		));
+		
 		$data['sponsor'] = $this->uri->segment(3);
 
 		$this->load->view('Register',$data);
@@ -37,23 +45,49 @@ class Register extends CI_Controller {
 		if($this->input->is_ajax_request()){
 			$result = $this->RegisterUser_m->save();
 			if($result == 'success'){
-				echo json_encode(array('status'=>'success'));
+				echo json_encode(array(
+					'status'   =>'success',
+					'msg_type' =>'success',
+					'msg_title'=>'Prontinho!',
+					'msg_text' =>'Cadastro realizado com sucesso.',
+				));
+
 			}else if($result == 'exists'){
-				echo json_encode(array('status'=>'exists'));
+				echo json_encode(array(
+					'status'=>'exists',
+					'msg_type' =>'error',
+					'msg_title'=>'Email já cadastrado! ',
+					'msg_text' =>'Tente recuperar sua senha.',
+				));
+				
 			}else if($result == 'invalidemail'){
-				echo json_encode(array('status'=>'invalidemail'));
+				echo json_encode(array(
+					'status'    =>'invalidemail',
+					'msg_type'  => 'error',
+					'msg_title' => 'Email inválido!',
+					'msg_text'  => 'Certifique-se se digitou corretamente.',
+				));
+
+			}else if($result == 'invalidsponsor'){
+				echo json_encode(array(
+					'status'    =>'invalidsponsor',
+					'msg_type'  => 'error',
+					'msg_title' => 'Falhou!',
+					'msg_text'  => 'Link de convite inválido.',
+				));
+				
 			}else{
-				echo json_encode(array('status'=>'error'));
+				echo json_encode(array(
+					'status'    =>'error',
+					'msg_type'  => 'error',
+					'msg_title' => 'Falhou',
+					'msg_text'  => 'Não foi possivel efetuar o cadastro.',
+				));
 			}
 		}else{
 			redirect('login');
 		}
 		
 		
-	}
-
-	public function register()
-	{
-		# code...
 	}
 }

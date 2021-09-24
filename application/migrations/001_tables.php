@@ -126,7 +126,7 @@ class Migration_tables extends CI_Migration {
             $this->dbforge->create_table('users_profits',TRUE);
         #table users_profits
 
-        #table 8 users_referrals_network
+        #table 8 users_networks
             /*
                 Tabela responsável por registrar quantidade de convidados na rede
                 logica: soma somente indicados diretos, e um script soma dinamicamente
@@ -138,8 +138,8 @@ class Migration_tables extends CI_Migration {
             $this->dbforge->add_field("`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'");
             $this->dbforge->add_field("`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'");
 
-            $this->dbforge->create_table('users_referrals_network',TRUE);
-        #table users_referrals_network
+            $this->dbforge->create_table('users_networks',TRUE);
+        #table users_networks
 
 
         #table 9 sys_settings
@@ -239,7 +239,7 @@ class Migration_tables extends CI_Migration {
         $this->dbforge->drop_table('users_withdrawals');
         $this->dbforge->drop_table('users_plans');
         $this->dbforge->drop_table('users_profits');
-        $this->dbforge->drop_table('users_referrals_network');
+        $this->dbforge->drop_table('users_networks');
 
         # tables relacionado ao sistema
         $this->dbforge->drop_table('sys_settings');

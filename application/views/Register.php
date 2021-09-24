@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Registration Page</title>
+    <title><?=$title?></title>
 
     <?php echo $css?>
 </head>
@@ -21,7 +21,8 @@
 
                 <form id="form">
                     <div class="input-group mb-3">
-                        <input type="hidden" name="sponsor" id="sponsor" value="">
+                        <input type="hidden" name="sponsor" id="sponsor" value="<?=$sponsor?>">
+                        <input type="hidden" name="base_url" id="base_url" value="<?=base_url()?>">
                         <input type="text" class="form-control" id="name" value="Filipe" name="name"  required placeholder="Seu nome">
                         <div class="input-group-append">
                             <div class="input-group-text">

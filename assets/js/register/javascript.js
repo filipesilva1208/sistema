@@ -23,11 +23,12 @@ $(document).ready(function (){
         }
     }
     
-    const sponsor        = $('#sponsor').val()
+    const base_url    = $('#base_url').val()
+    const sponsor     = $('#sponsor').val()
     const name        = $('#name').val()
     const email       = $('#email').val()
     const password    = $('#password').val()
-    const telephone    = $('#telephone').val()
+    const telephone   = $('#telephone').val()
     const r_password  = $('#r_password').val()       
 
     $('#r_password').on('blur', function(){
@@ -46,7 +47,7 @@ $(document).ready(function (){
             alert('Preencha todos os compos!','error')
         }else{
             $.ajax({
-                url: 'Register/send',
+                url: base_url +'Register/send',
                 type: 'POST',
                 dataType: 'json',
                 data: new FormData(this),
@@ -63,31 +64,37 @@ $(document).ready(function (){
                 success: function(data){
                   setTimeout(function(){
                     if(data.status == 'success'){
-                        alert('Cadastro realizado com sucesso!','success','Prontinho!')
+                        alert(data.msg_text,data.type,data.title)
                         $(".register-box-msg").html("")
                         setTimeout(function(){
                             alert('Uma senha temporária foi enviada para seu email!','success','Importante!')
                             setTimeout(function(){
-                                window.location.href = 'Login'
+                                window.location.href = base_url+'login'
                             },3000)
                         },1000)
 
                     }else if(data.status == 'exists'){
-                        alert("Tente recuperar sua senha.","error","Email já cadastrado! ")
+                        alert(data.msg_text,data.msg_type,data.msg_title)
 
                         $(".register-box-msg").html("Registre uma nova conta")
                         $("#btnRegister").attr("disabled", false);
 
                     }else if(data.status == 'invalidemail'){
-                        alert("Certifique-se se digitou corretamente.","error","Email inválido! ")
+                        alert(data.msg_text,data.msg_type,data.msg_title)
+
+                        $(".register-box-msg").html("Registre uma nova conta")
+                        $("#btnRegister").attr("disabled", false);
+
+                    }else if(data.status == 'invalidsponsor'){
+                        alert(data.msg_text,data.msg_type,data.msg_title)
 
                         $(".register-box-msg").html("Registre uma nova conta")
                         $("#btnRegister").attr("disabled", false);
 
                     }else{
-                        alert('Não foi possivel realizar seu cadastro.','error',"Error!")
+                        alert(data.msg_text,data.msg_type,data.msg_title)
 
-                        $(".register-box-msg").html("Registrando...")
+                        $(".register-box-msg").html("Registre uma nova conta")
                         $("#btnRegister").attr("disabled", false);
                     }
                   },1500)
