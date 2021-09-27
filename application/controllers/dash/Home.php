@@ -24,7 +24,7 @@ class Home extends CI_Controller {
 			'plugins/daterangepicker/daterangepicker',
 			'plugins/summernote/summernote-bs4.min',
 		));
-		$data['js'] = load_js(array(
+		$data['js']  = load_js(array(
 			'plugins/jquery/jquery.min',
 			'plugins/jquery-ui/jquery-ui.min',
 			'plugins/bootstrap/js/bootstrap.bundle.min',
@@ -43,7 +43,10 @@ class Home extends CI_Controller {
 			'js/dashboard',
 		));
 
-		$this->load->view('cliente/Home',$data);
+		$data['site_name']      = 'STA';
+		$data['page_name']      = 'Dashboard';
+
+		$this->load->view('cliente/dash/Home',$data);
 	}
 
 	
