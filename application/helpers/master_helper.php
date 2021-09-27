@@ -48,3 +48,29 @@ function activeUserIcon()
         return '<i class="fas fa-times-circle text-danger"></i>';
     }
 }
+
+function getNetwork($id_user = 0)
+{
+    $CI  = & get_instance();
+
+    if($id_user > 0){
+        $query = $CI->db
+            ->select('references')
+            ->where('id_user', $id_user)
+            ->get('users_networks')
+            ->row();
+    
+        return $query[0]->references; 
+
+    }else{
+        $id_user = $CI->session->userdata['loggedUser']['id'];
+        $query =$CI->db
+            ->select('references')
+            ->where('id_user', $id_user)
+            ->get('users_networks')
+            ->row();
+
+        return $query->references;
+    }
+
+}

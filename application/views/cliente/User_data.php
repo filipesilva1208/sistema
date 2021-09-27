@@ -11,13 +11,13 @@
                         alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire <?=statusUserIcon()?></h3>
+                <h3 class="profile-username text-center"><?=ucfirst($data_user[0]->name)?> <?=statusUserIcon()?></h3>
 
                 <p class="text-muted text-center">Software Engineer </p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>Followers</b> <a class="float-right">1,322</a>
+                        <b>Convidados</b> <a class="float-right"><?=getNetwork()?></a>
                     </li>
                     <li class="list-group-item">
                         <b>Following</b> <a class="float-right">543</a>
