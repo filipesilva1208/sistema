@@ -7,6 +7,7 @@ class User_data extends CI_Controller {
 		parent::__construct();
 		$this->load->library("access_control");
 		$this->access_control->checking();
+		$this->load->model('user/UserData_m','UserData');
 	}
 
 	public function index()
@@ -23,6 +24,7 @@ class User_data extends CI_Controller {
 			'plugins/overlayScrollbars/css/OverlayScrollbars.min',
 			'plugins/daterangepicker/daterangepicker',
 			'plugins/summernote/summernote-bs4.min',
+			'css/toastr.min',
 		));
 		$data['js']  = load_js(array(
 			'plugins/jquery/jquery.min',
@@ -41,11 +43,37 @@ class User_data extends CI_Controller {
 			'dist/js/adminlte',
 			'js/demo',
 			'js/dashboard',
+			'js/toastr.min',
+			'js/cliente/userData/updateData',
 		));
 
+		$data['data_user']      = $this->UserData->getData();
 		$data['site_name']      = 'STA';
 		$data['page_name']      = 'Minha Conta';
+
         $this->load->view('cliente/User_data',$data);
+	}
+
+	public function updateData()
+	{
+		if($this->input->is_ajax_request()){
+			if($this->UserData->updateData() == TRUE){
+				echo json_encode(array("status"=>"success"));
+			}else{
+				echo json_encode(array("status"=>"error"));
+			}
+		}
+	}
+
+	public function updatePassword()
+	{
+		if($this->input->is_ajax_request()){
+			if($this->UserData->updatePassword() == TRUE){
+				echo json_encode(array("status"=>"success"));
+			}else{
+				echo json_encode(array("status"=>"error"));
+			}
+		}
 	}
 
 

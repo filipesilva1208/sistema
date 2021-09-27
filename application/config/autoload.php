@@ -103,6 +103,7 @@ $autoload['helper'] = array(
     'assets_helper',
     'categorias_helper',
     'retira_acentos_helper',
+    'master_helper',
 );
 
 /*

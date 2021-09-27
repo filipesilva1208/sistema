@@ -11,9 +11,9 @@
                         alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center">Nina Mcintire <?=statusUserIcon()?></h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+                <p class="text-muted text-center">Software Engineer </p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
@@ -47,29 +47,30 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="active tab-pane" id="settings">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="updateDada">
+                            <input type="hidden" id="inputBaseUrl" value="<?=base_url()?>">
                             <div class="form-group row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" required id="inputName" placeholder="Name">
+                                    <input type="text" class="form-control" required id="inputName" placeholder="Name" value="<?=$data_user[0]->name?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" required id="inputEmail" placeholder="Email">
+                                    <input type="email" class="form-control" required id="inputEmail" placeholder="Email" value="<?=$data_user[0]->email?>">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                                <label for="inputName2" class="col-sm-2 col-form-label">CPF</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" required id="inputName2" placeholder="Name">
+                                    <input type="text" class="form-control" required id="inputCpf" placeholder="CPF" value="<?=$data_user[0]->cpf?>">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                                <label for="inputSkills" class="col-sm-2 col-form-label">Telefone</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" required id="inputSkills" placeholder="Skills">
+                                    <input type="number" class="form-control" required id="inputTelephone" placeholder="(__)_ ____ ____" value="<?=$data_user[0]->telephone?>">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -82,7 +83,7 @@
                     <!-- /.tab-pane -->
 
                     <div class="tab-pane" id="password">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="updatePassword">
                             <div class="form-group row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Nova senha</label>
                                 <div class="col-sm-10">
