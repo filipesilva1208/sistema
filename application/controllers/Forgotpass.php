@@ -25,7 +25,7 @@ class Forgotpass extends CI_Controller {
 			'js/adminlte',
 		));
 
-		$this->load->view('cliente/Forgotpass',$data);
+		$this->load->view('Forgotpass',$data);
 	}
 
 	public function Cadastro()

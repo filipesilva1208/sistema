@@ -25,7 +25,7 @@ class Register extends CI_Controller {
 			'js/adminlte',
 		));
 
-		$this->load->view('cliente/Register',$data);
+		$this->load->view('Register',$data);
 	}
 
 	public function Cadastro()
