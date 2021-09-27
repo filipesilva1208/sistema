@@ -70,7 +70,7 @@
                             <div class="form-group row">
                                 <label for="inputSkills" class="col-sm-2 col-form-label">Telefone</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" required id="inputTelephone" placeholder="(__)_ ____ ____" value="<?=$data_user[0]->telephone?>">
+                                    <input type="text" class="form-control" required id="inputTelephone"  minlength="11" placeholder="(__)_ ____ ____" value="<?=$data_user[0]->telephone?>">
                                 </div>
                             </div>
                             <div class="form-group row">

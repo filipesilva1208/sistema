@@ -43,6 +43,7 @@ class User_data extends CI_Controller {
 			'dist/js/adminlte',
 			'js/demo',
 			'js/dashboard',
+			'js/jquery.mask.min',
 			'js/toastr.min',
 			'js/cliente/userData/updateData',
 		));

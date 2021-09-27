@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+    $("#inputCpf").mask("000.000.000-00")
+    $("#inputTelephone").mask("(00) 0 0000 0009")
   
 
     function alert(msg, type = 'success', title = null ){
