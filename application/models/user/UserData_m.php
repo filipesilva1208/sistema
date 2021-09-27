@@ -44,4 +44,16 @@ class UserData_m extends CI_Model {
         }
         return $result;
     }
+
+    public function getNetwork()
+    {
+        $id_user = $this->session->userdata['loggedUser']['id'];
+
+        $query = $this->db
+            ->select('references')
+            ->where('id_user', $id_user)
+            ->get($this->table);
+
+        return $query->row();    
+    }
 }
