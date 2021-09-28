@@ -19,8 +19,9 @@ class UserData_m extends CI_Model {
     public function updateData()
     {
         $result = FALSE;
-        $data['telephone'] = $this->input->post('telephone');
-        $data['cpf'] = $this->input->post('cpf');
+        $data['telephone']  = $this->input->post('telephone');
+        $data['cpf']        = $this->input->post('cpf');
+        $data['updated_at'] = date('Y-m-d H:i:s');
 
         $this->db->where('id', dataUser(0,'id'));
         if($this->db->update($this->table,$data)){
