@@ -21,7 +21,7 @@ class RegisterUser_m extends CI_Model {
             return 'invalidsponsor';
         }else{  
 
-            $data['name']        = $this->input->post('name');
+            $data['name']        = strtolower($this->input->post('name'));
             $data['email']       = $this->input->post('email');
             $data['cpf']         = 1231232321;
             $data['password']    = md5($this->input->post('password'));
