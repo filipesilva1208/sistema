@@ -17,7 +17,7 @@ class Migration_tables extends CI_Migration {
             $this->dbforge->add_field("`password` varchar(100) NOT NULL ");
             $this->dbforge->add_field("`telephone` varchar(20) NOT NULL ");
             $this->dbforge->add_field("`nivel` int(2) NOT NULL DEFAULT '0'");
-            $this->dbforge->add_field("`status` int(2) NOT NULL DEFAULT '0'");
+            $this->dbforge->add_field("`blocked` int(2) NOT NULL DEFAULT '0'");
             $this->dbforge->add_field("`active` int(2) NOT NULL DEFAULT '0'");
             $this->dbforge->add_field("`sponsor` int(11) NOT NULL DEFAULT '0'");
             $this->dbforge->add_field("`account_ip` VARCHAR(20) NOT NULL DEFAULT '0'");
