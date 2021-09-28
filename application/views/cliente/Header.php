@@ -13,7 +13,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <?php //$this->load->view('cliente/Preload')?>
+        <?php $this->load->view('cliente/Preload')?>
         <?php $this->load->view('cliente/Navbar')?>
         <?php $this->load->view('cliente/Sidebar')?>
         <?php $this->load->view('cliente/Content_header')?>
