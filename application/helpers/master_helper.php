@@ -59,8 +59,12 @@ function getNetwork($id_user = 0)
             ->where('id_user', $id_user)
             ->get('users_networks')
             ->row();
+        if($query == true){
+            return $query->references; 
+        }else{
+            return 0;
+        }    
     
-        return $query[0]->references; 
 
     }else{
         $id_user = $CI->session->userdata['loggedUser']['id'];
@@ -70,7 +74,11 @@ function getNetwork($id_user = 0)
             ->get('users_networks')
             ->row();
 
-        return $query->references;
+        if($query == true){
+            return $query->references; 
+        }else{
+            return 0;
+        } 
     }
 
 }
