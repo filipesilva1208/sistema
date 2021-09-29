@@ -16,6 +16,21 @@ class UserData_m extends CI_Model {
         return $query->result();
     }
 
+
+    public function getUserData($id_user)
+    {
+        $query = $this->db 
+            ->where('id', $id_user)
+            ->get('users');
+
+        if($query->num_rows() > 0){
+            return $query->result();
+
+        }else{
+            redirect('admin/List_users');
+        }
+    }
+
     public function updateData()
     {
         $result = FALSE;

@@ -141,6 +141,20 @@ class Migration_tables extends CI_Migration {
             $this->dbforge->create_table('users_networks',TRUE);
         #table users_networks
 
+         #table 8 users_log_access
+            /*
+                Tabela responsável por registrar quantidade de convidados na rede
+                logica: soma somente indicados diretos, e um script soma dinamicamente
+                de acordo com a quantidade de nives o total de convidados por nivel
+            */
+            $this->dbforge->add_field("`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY");
+            $this->dbforge->add_field("`id_user` int(11) NOT NULL  ");
+            $this->dbforge->add_field("`ip` varchar(50) NOT NULL DEFAULT '0' ");
+            $this->dbforge->add_field("`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'");
+
+            $this->dbforge->create_table('users_log_access',TRUE);
+        #table users_log_access
+
 
         #table 9 sys_settings
             /*
@@ -240,6 +254,7 @@ class Migration_tables extends CI_Migration {
         $this->dbforge->drop_table('users_plans');
         $this->dbforge->drop_table('users_profits');
         $this->dbforge->drop_table('users_networks');
+        $this->dbforge->drop_table('users_log_access');
 
         # tables relacionado ao sistema
         $this->dbforge->drop_table('sys_settings');

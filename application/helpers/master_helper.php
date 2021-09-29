@@ -42,7 +42,7 @@ function statusUserIcon()
 }
 function activeUserIcon()
 {
-    if(dataUser(0,'blocked') == 1){
+    if(dataUser(0,'active') == 1){
         return '<i class="fas fa-check-circle text-success"></i>';
     }else{
         return '<i class="fas fa-times-circle text-danger"></i>';
@@ -109,21 +109,45 @@ function blockedUserButton($id_user)
     }
 }
 
-function maskCel($TEL) {
+function maskCel($TEL)
+{
     $tam = strlen(preg_replace("/[^0-9]/", "", $TEL));
-      if ($tam == 13) { // COM CÓDIGO DE ÁREA NACIONAL E DO PAIS e 9 dígitos
-      return "+".substr($TEL,0,$tam-11)."(".substr($TEL,$tam-11,2).")".substr($TEL,$tam-9,5)."-".substr($TEL,-4);
-      }
-      if ($tam == 12) { // COM CÓDIGO DE ÁREA NACIONAL E DO PAIS
-      return "+".substr($TEL,0,$tam-10)."(".substr($TEL,$tam-10,2).")".substr($TEL,$tam-8,4)."-".substr($TEL,-4);
-      }
-      if ($tam == 11) { // COM CÓDIGO DE ÁREA NACIONAL e 9 dígitos
-      return "(".substr($TEL,0,2).")".substr($TEL,2,5)."-".substr($TEL,7,11);
-      }
-      if ($tam == 10) { // COM CÓDIGO DE ÁREA NACIONAL
-      return "(".substr($TEL,0,2).")".substr($TEL,2,4)."-".substr($TEL,6,10);
-      }
-      if ($tam <= 9) { // SEM CÓDIGO DE ÁREA
-      return substr($TEL,0,$tam-4)."-".substr($TEL,-4);
-      }
-  }
+        if ($tam == 13) { // COM CÓDIGO DE ÁREA NACIONAL E DO PAIS e 9 dígitos
+        return "+".substr($TEL,0,$tam-11)."(".substr($TEL,$tam-11,2).")".substr($TEL,$tam-9,5)."-".substr($TEL,-4);
+        }
+        if ($tam == 12) { // COM CÓDIGO DE ÁREA NACIONAL E DO PAIS
+        return "+".substr($TEL,0,$tam-10)."(".substr($TEL,$tam-10,2).")".substr($TEL,$tam-8,4)."-".substr($TEL,-4);
+        }
+        if ($tam == 11) { // COM CÓDIGO DE ÁREA NACIONAL e 9 dígitos
+        return "(".substr($TEL,0,2).")".substr($TEL,2,5)."-".substr($TEL,7,11);
+        }
+        if ($tam == 10) { // COM CÓDIGO DE ÁREA NACIONAL
+        return "(".substr($TEL,0,2).")".substr($TEL,2,4)."-".substr($TEL,6,10);
+        }
+        if ($tam <= 9) { // SEM CÓDIGO DE ÁREA
+        return substr($TEL,0,$tam-4)."-".substr($TEL,-4);
+        }
+}
+
+function now()
+{
+    return date('Y-m-d H:i:s');
+}
+
+function pri_ult_nome($nome)
+{
+    $partes = explode(' ', $nome);
+    $primeiroNome = array_shift($partes);
+    $ultimoNome = array_pop($partes);
+
+    return ucfirst($primeiroNome).' '. ucfirst($ultimoNome);
+}
+
+function pri_nome($nome)
+{
+    $partes = explode(' ', $nome);
+    $primeiroNome = array_shift($partes);
+    $ultimoNome = array_pop($partes);
+
+    return ucfirst($primeiroNome);
+}

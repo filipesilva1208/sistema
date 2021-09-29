@@ -36,7 +36,7 @@
             <div class="inner">
                 <h3><?=$registrations_today?></h3>
 
-                <p>Novos cadastros ( programar )</p>
+                <p>Novos cadastros</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -51,7 +51,7 @@
             <div class="inner">
                 <h3><?=$visits_today?></h3>
 
-                <p>Visitas hoje ( programar )</p>
+                <p>Visitas hoje</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>

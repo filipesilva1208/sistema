@@ -53,7 +53,9 @@ class Login extends CI_Controller {
 			
 			if($user == true)
 			{	
-				$result = json_encode(array("status"=>"admin"));
+				$this->logAcess($user['id']);
+
+				//$result = json_encode(array("status"=>"admin"));
 				if($user['nivel'] == 1){
 					$this->session->set_userdata("loggedUser", $user);				
 					$result = json_encode(array("status"=>"admin"));
@@ -69,6 +71,11 @@ class Login extends CI_Controller {
 			echo $result;
 
 		} 
+	}
+
+	public function logAcess($id)
+	{
+		return $this->AuthenticateLogin->logAcess($id);
 	}
 
 	public function logout()

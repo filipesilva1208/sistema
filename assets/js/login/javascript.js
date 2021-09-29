@@ -1,4 +1,28 @@
 $(document).ready(function() {
+
+    function alert(msg, type = 'success', title = null ){
+
+        Command: toastr[type](msg,title)
+
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    }
+
     $('#logar').click(function(e){
         e.preventDefault()
         var email = $('#email').val()
@@ -48,50 +72,15 @@ $(document).ready(function() {
                 success: function(data){
                     setTimeout(function(){
                         if(data.status == 'admin'){
-                            Command: toastr["success"]("Autenticação realizada com sucesso!")
-        
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "2000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            }
-        
+                            alert('Autenticação realizada com sucesso!')
+
                             setTimeout(function(){
-                                window.location.href = 'dash/home'
+                                window.location.href = 'admin/home'
                             },2000)
         
                         }else if(data.status == 'user'){
-                            Command: toastr["success"]("Autenticação realizada com sucesso!")
-        
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "2000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            }
+                            alert('Autenticação realizada com sucesso!')
+
                             setTimeout(function(){
                                 window.location.href = 'dash/home'
                             },2000)
@@ -100,25 +89,8 @@ $(document).ready(function() {
                         }else if(data.status == 'erro'){
                             $(".login-box-msg").html("Faça login para iniciar sua sessão");
                             $("#logar").attr("disabled", false);
-                            Command: toastr["error"]("Email ou password inválidos!")
-        
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            }
+
+                            alert('Email ou password inválidos!','error')
                         }                        
                     },1000)
                 }

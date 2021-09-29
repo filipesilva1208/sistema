@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->library("access_control");
 		$this->access_control->checking();
+		$this->load->model('user/UserData_m','UserData');
 	}
 
 	public function index()
@@ -43,6 +44,7 @@ class Home extends CI_Controller {
 			'js/dashboard',
 		));
 
+		$data['data_user']      = $this->UserData->getData();
 		$data['site_name']      = 'STA';
 		$data['page_name']      = 'Dashboard';
 

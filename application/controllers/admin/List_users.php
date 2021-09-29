@@ -7,9 +7,11 @@ class List_users extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->library("access_control");
+		$this->load->library("Css_js_padrao");
 		$this->access_control->checkingAdmin();
         $this->load->model('System_data_m');
         $this->load->model('admin/List_users_m');
+        $this->load->model('user/UserData_m','UserData');
 	}
 
 	public function index()
@@ -51,10 +53,7 @@ class List_users extends CI_Controller {
 
 		$data['site_name']            = 'STA';
 		$data['page_name']            = 'Usuários';
-		$data['total_users']          = $this->System_data_m->totalUsers();
-		$data['total_users_plans']    = $this->System_data_m->totalUsersplans();
-		$data['registrations_today']  = $this->System_data_m->registrations_today();
-		$data['visits_today']         = $this->System_data_m->visits_today();
+        $data['data_user']            = $this->UserData->getData();
 
 		$this->load->view('admin/List_users',$data);
 	}
@@ -70,7 +69,7 @@ class List_users extends CI_Controller {
             $sub_array[] = $row->email;
             $sub_array[] = maskCel($row->telephone);
             $sub_array[] = '<div class="btn-group">
-                <a href="#" class="btn btn-sm btn-primary" id="edit" value="'.$row->id.'" name="'.$row->name.'"
+                <a href="'.base_url().'admin/List_users/editUser/'.$row->id.'" class="btn btn-sm btn-primary" id="edit" value="'.$row->id.'" name="'.$row->name.'"
                 data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-user-edit"></i></a>
                 
                 '.statusUserButton($row->id).
@@ -146,6 +145,19 @@ class List_users extends CI_Controller {
 
         }
 
+    }
+
+    public function editUser($id_user)
+    {
+        $data = $this->css_js_padrao->get_css_js_padrao();
+        //$data['js'] .= load_js(array("descomentar caso tenha outro file desta pagina"));
+
+        $data['id_user']              = $this->uri->segment(4);
+        $data['site_name']            = 'STA';
+		$data['page_name']            = 'Usuários';
+        $data['data_user']            = $this->UserData->getUserData($this->uri->segment(4));
+        
+        $this->load->view('admin/editUser',$data);
     }
 
 	

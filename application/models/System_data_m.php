@@ -16,22 +16,19 @@ class System_data_m extends CI_Model {
 
     public function registrations_today()
     {
-        // return $this->db
-        //     ->where('created_at', date('Y-m-d'))
-        //     ->count_all_results('users');
-        // contar somente novos cadastros do dia
-
-        return 0;
+        $r = $this->db
+        ->query("SELECT count(id) as total FROM users WHERE YEAR(created_at) = YEAR(CURDATE()) AND DAY(created_at) = DAY(CURDATE())")
+        ->row();
+        return  $r->total;
+       
     }
 
     public function visits_today()
     {
-        // return $this->db
-        //     ->where('created_at', date('Y-m-d'))
-        //     ->count_all_results('users');
-        // contar somente novos cadastros do dia
-
-        return 0;
+        $r = $this->db
+        ->query("SELECT count(id) as total FROM users_log_access WHERE YEAR(created_at) = YEAR(CURDATE()) AND DAY(created_at) = DAY(CURDATE())")
+        ->row();
+        return  $r->total;
     }
 
 }

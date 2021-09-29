@@ -12,4 +12,18 @@ class AuthenticateLogin extends CI_Model {
 
         return $user->row_array();
     }
+
+    public function logAcess($id_user)
+    {
+        if($id_user > 0){
+            $data['id_user']     = $id_user;
+            $data['ip']          = get_ip_helper();
+            $data['created_at']  = now();
+
+            $this->db->insert('users_log_access',$data);
+        }else{
+            return false;
+        }
+     
+    }
 }

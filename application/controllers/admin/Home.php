@@ -8,6 +8,7 @@ class Home extends CI_Controller {
 		$this->load->library("access_control");
 		$this->access_control->checkingAdmin();
         $this->load->model('System_data_m');
+		$this->load->model('user/UserData_m','UserData');
 	}
 
 	public function index()
@@ -43,9 +44,11 @@ class Home extends CI_Controller {
 			'js/demo',
 			'js/dashboard',
 		));
+		
 
 		$data['site_name']            = 'STA';
 		$data['page_name']            = 'Painel Admin';
+		$data['data_user']            = $this->UserData->getData();
 		$data['total_users']          = $this->System_data_m->totalUsers();
 		$data['total_users_plans']    = $this->System_data_m->totalUsersplans();
 		$data['registrations_today']  = $this->System_data_m->registrations_today();
