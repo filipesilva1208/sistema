@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Css_js_padrao {
 
-    public function get_css_js_padrao()
+    public function get()
     {
         $data['css'] = load_css(array(
 			'css/fonts.googleapis',

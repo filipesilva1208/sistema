@@ -151,3 +151,34 @@ function pri_nome($nome)
 
     return ucfirst($primeiroNome);
 }
+
+function checkAdmin($id_user = 0)
+{
+    $CI  = & get_instance();
+    
+    if($id_user > 0){
+        //busca status do user passado por parametro
+        $query = $CI->db
+            ->where('id', $id_user)
+            ->get('users')
+            ->row();
+            if($query == true){
+                return true;  
+            }else{
+                return false;  
+            }
+    }else{
+        //busca status do user logado
+        $query = $CI->db
+            ->where('id',$CI->session->userdata['loggedUser']['id'])
+            ->get('users')
+            ->row();
+            if($query == true){
+                if($query->nivel == 1){
+                    return true;    
+                }else{
+                    return false;             
+                }
+            }
+         }
+}

@@ -82,4 +82,37 @@ class List_users_m extends CI_Model {
         return $this->db->update($this->table,$data);  
     }
 
+    public function updateUser()
+    {
+        $id_user            = $this->input->post('id_user');
+
+        if(!empty($this->input->post('inputName'))){
+            $data['name']       = $this->input->post('inputName');
+        }
+
+        if(!empty($this->input->post('inputEmail'))){
+            $data['email']      = $this->input->post('inputEmail');
+        }
+
+        if(!empty($this->input->post('inputCpf'))){
+            $data['cpf']       = $this->input->post('inputCpf');
+        }
+
+        if(!empty($this->input->post('inputTelephone'))){
+            $data['telephone']  = $this->input->post('inputTelephone');
+        }
+    
+        if(!empty($this->input->post('inputPassword'))){
+            $data['password']  = md5($this->input->post('inputPassword'));
+        }
+
+        $this->db->where('id',$id_user);
+        if($this->db->update($this->table, $data)){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+       
+    }
+
 }

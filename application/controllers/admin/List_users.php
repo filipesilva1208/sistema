@@ -147,10 +147,13 @@ class List_users extends CI_Controller {
 
     }
 
-    public function editUser($id_user)
+    public function editUser($id_user = null)
     {
-        $data = $this->css_js_padrao->get_css_js_padrao();
-        //$data['js'] .= load_js(array("descomentar caso tenha outro file desta pagina"));
+        $data = $this->css_js_padrao->get();
+        $data['js'] .= load_js(array(
+            "js/admin/editUser/editUser",
+            'js/jquery.mask.min',
+        ));
 
         $data['id_user']              = $this->uri->segment(4);
         $data['site_name']            = 'STA';
@@ -158,6 +161,18 @@ class List_users extends CI_Controller {
         $data['data_user']            = $this->UserData->getUserData($this->uri->segment(4));
         
         $this->load->view('admin/editUser',$data);
+    }
+
+    function updateUser()
+    {
+        if($this->input->is_ajax_request()){
+            
+            if($this->List_users_m->updateUser() == true){
+                echo json_encode(array('status'=>'success')); 
+            }else{
+                echo json_encode(array('status'=>'error')); 
+            }
+        }
     }
 
 	
