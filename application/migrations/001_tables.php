@@ -20,6 +20,7 @@ class Migration_tables extends CI_Migration {
             $this->dbforge->add_field("`blocked` int(2) NOT NULL DEFAULT '0'");
             $this->dbforge->add_field("`active` int(2) NOT NULL DEFAULT '0'");
             $this->dbforge->add_field("`sponsor` int(11) NOT NULL DEFAULT '0'");
+            $this->dbforge->add_field("`profile` varchar(100)  ");
             $this->dbforge->add_field("`account_ip` VARCHAR(20) NOT NULL DEFAULT '0'");
             $this->dbforge->add_field("`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'");
             $this->dbforge->add_field("`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'");

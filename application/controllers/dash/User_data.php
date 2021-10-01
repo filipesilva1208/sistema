@@ -46,6 +46,7 @@ class User_data extends CI_Controller {
 			'js/jquery.mask.min',
 			'js/toastr.min',
 			'js/cliente/userData/updateData',
+			'js/cliente/userData/updateProfile',
 		));
 
 		$data['data_user']      = $this->UserData->getData();
@@ -76,6 +77,18 @@ class User_data extends CI_Controller {
 			}
 		}
 	}
+
+	public function updateProfile()
+    {
+        if($this->input->is_ajax_request()){
+			
+			if($this->UserData->updateProfile() == TRUE){
+				echo json_encode(array("status"=>"success"));
+			}else{
+				echo json_encode(array("status"=>"error"));
+			}
+		}
+    }
 
 
 }

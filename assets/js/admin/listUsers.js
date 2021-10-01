@@ -165,7 +165,7 @@ $(document).ready(function(){
         if(desable_id == ""){
             alert("Id requerido")
         }else{
-            var resultado = confirm("Ativar usuário?");
+            var resultado = confirm("Desativar usuário?");
             if (resultado == true) {
                $.ajax({
                    url: "List_users/desableUser" ,

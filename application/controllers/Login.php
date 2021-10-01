@@ -28,19 +28,9 @@ class Login extends CI_Controller {
 			'js/toastr.min',
 		));
 
-		$this->load->view('Login',$data);
-	}
+		$data['title']    = 'STA | Login';
 
-	public function register()
-	{
-		if($this->Cadastro_cliente->salvar()== true){
-			$this->session->set_flashdata("success", "Cadastro realizado com sucesso");
-			redirect('Inicio');
-		}else{
-			$this->session->set_flashdata("danger", "Ops... Login indisponível! Tente outro");
-			redirect('Inicio');
-		}
-		
+		$this->load->view('Login',$data);
 	}
 
 	public function authentication()

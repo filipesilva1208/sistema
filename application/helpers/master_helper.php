@@ -32,6 +32,12 @@ function dataUser($id_user = 0, $column = null)
     }
 }
 
+function user_id_logged()
+{
+    $CI = & get_instance();
+    return $CI->session->userdata['loggedUser']['id'];
+}
+
 function statusUserIcon()
 {
     if(dataUser(0,'blocked') == 1){
@@ -129,11 +135,13 @@ function maskCel($TEL)
         }
 }
 
+// pega data e hora atuais
 function now()
 {
     return date('Y-m-d H:i:s');
 }
 
+//traz somente ultimo nome
 function pri_ult_nome($nome)
 {
     $partes = explode(' ', $nome);
@@ -143,6 +151,7 @@ function pri_ult_nome($nome)
     return ucfirst($primeiroNome).' '. ucfirst($ultimoNome);
 }
 
+// traz só primeiro nome
 function pri_nome($nome)
 {
     $partes = explode(' ', $nome);
@@ -152,6 +161,7 @@ function pri_nome($nome)
     return ucfirst($primeiroNome);
 }
 
+//checa se o user é admin
 function checkAdmin($id_user = 0)
 {
     $CI  = & get_instance();
@@ -182,3 +192,31 @@ function checkAdmin($id_user = 0)
             }
          }
 }
+
+//Somente numeros 
+function onlyNumber($string)
+{
+    return preg_replace("/[^0-9]/", "", $string);
+}
+
+function profile($img = null)
+{
+    $CI = & get_instance();
+    if($img == null){
+        return "<img src='https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png' class='profile-user-img img-fluid img-circle' alt='profile'> ";
+    }else{
+        return "<img src='".dataUser(user_id_logged(),'profile')."' class='profile-user-img img-fluid img-circle' alt='profile'> ";
+    }
+}
+
+//var_dump
+function dd($str)
+{
+    $var_dump  = '<pre>';
+    $var_dump .= var_dump($str);
+    $var_dump .= '<pre>';
+    $var_dump .= die();
+
+    return $var_dump;
+}
+  

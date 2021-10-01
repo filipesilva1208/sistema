@@ -23,15 +23,15 @@ class RegisterUser_m extends CI_Model {
 
             $data['name']        = strtolower($this->input->post('name'));
             $data['email']       = $this->input->post('email');
-            $data['cpf']         = 1231232321;
+            $data['cpf']         = 0;//onlyNumber($this->input->post('cpf'));
             $data['password']    = md5($this->input->post('password'));
-            $data['telephone']   = 123456789;
+            $data['telephone']   = onlyNumber($this->input->post('telephone'));
             $data['nivel']       = 0;
-            $data['status']      = 0;
+            $data['blocked']     = 0;
             $data['active']      = 0;
             $data['sponsor']     = $this->input->post('sponsor');
             $data['account_ip']  = get_ip_helper();
-            $data['created_at']  = date('Y-m-d H:i:s');
+            $data['created_at']  = now();
             $data['updated_at']  = '0000-00-00 00:00:00';
             $data['activate_at'] = '0000-00-00 00:00:00';
 

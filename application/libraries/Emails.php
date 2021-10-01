@@ -7,11 +7,15 @@ use PHPMailer\PHPMailer\Exception;
 class Emails
 {
     #CONFIGURAÇÕES GERAIS
-    public $MAIL_HOST      = 'mail.pepco.com.br';
-    public $MAIL_PORT      = '465';
-    public $MAIL_USERNAME  = 'smtp@pepco.com.br';
-    public $MAIL_PASSWORD  = '2WT9kLS@!Grb';
-    public $MAIL_FROM      = 'naoresponda@pepco.com.br';//pass 2y4LO}D(Oezw
+    /*
+        Definir informações do servidor quando estiver em produção
+    */
+    public $SITE_NAME      = 'STA';
+    public $MAIL_HOST      = 'smtp.mailtrap.io';
+    public $MAIL_PORT      = '2525';
+    public $MAIL_USERNAME  = 'db11b01deb47ec';
+    public $MAIL_PASSWORD  = '8fb46c4679c087';
+    public $MAIL_FROM      = 'teste@email.com';
     public $MAIL_REMETENTE = '';
     public $DEBUG_MODE     = 0;
     public $DESTINATARIO   = '';
@@ -25,18 +29,18 @@ class Emails
        
         $mail = new PHPMailer(true);
         $mail->IsSMTP();    //Ativar SMTP
-        $mail->SMTPDebug = $this->DEBUG_MODE;    //Debugar: 1 = erros e mensagens, 2 = mensagens apenas
-        $mail->SMTPAuth = true;    //Autenticação ativada
-        $mail->SMTPSecure = 'ssl';  //SSL REQUERIDO pelo GMail
-        $mail->Host = $this->MAIL_HOST;  // SMTP utilizado
-        $mail->Port =$this->MAIL_PORT;      //A porta 587 deverá estar aberta em seu servidor
-        $mail->Username = $this->MAIL_USERNAME;
-        $mail->Password = $this->MAIL_PASSWORD;
-        $mail->SetFrom($this->MAIL_FROM, 'PEPCO');
+        $mail->SMTPDebug    = $this->DEBUG_MODE;    //Debugar: 1 = erros e mensagens, 2 = mensagens apenas
+        $mail->SMTPAuth     = true;    //Autenticação ativada
+        $mail->SMTPSecure   = 'tls';  //SSL REQUERIDO pelo GMail
+        $mail->Host         = $this->MAIL_HOST;  // SMTP utilizado
+        $mail->Port         = $this->MAIL_PORT;      //A porta 587 deverá estar aberta em seu servidor
+        $mail->Username     = $this->MAIL_USERNAME;
+        $mail->Password     = $this->MAIL_PASSWORD;
+        $mail->Subject      = $assunto;
+        $mail->Body         = $mensagem;
+        $mail->CharSet      = 'UTF-8';
+        $mail->SetFrom($this->MAIL_FROM, $this->SITE_NAME);
         $mail->IsHTML(true);
-        $mail->Subject = $assunto;
-        $mail->Body = $mensagem;
-        $mail->CharSet = 'UTF-8';
 
         $mail->AddAddress($distinatarios);
         

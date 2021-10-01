@@ -35,15 +35,12 @@ $(document).ready(function(){
         var cpf       = $('#inputCpf').val()
 
         $.ajax({
-            url: "User_data/updateData",
+            url: base_url + "dash/User_data/updateData",
             type: 'post',
             dataType: 'json',
-            data: {
-                telephone: telephone,
-                cpf:       cpf,
-            },
-            // processData: false,
-            // contentType: false,
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
             cache: false,
             async: false,
 
